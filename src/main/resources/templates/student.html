@@ -1,0 +1,28 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" type="text/css">
+</head>
+<body>
+<div th:replace="fragments::header"></div>
+<div th:replace="fragments::navbar"></div>
+<form th:action="@{'/update-student/' + ${studentData.id}}" th:object="${studentData}" th:method="put">
+  <table border="1">
+    <tr>
+      <td><label th:text="#{label.name}"/></td>
+      <td><input type="text" th:field="*{name}" th:value="${studentData.getName()}"/></td>
+    </tr>
+    <tr>
+      <td><label th:text="#{label.age}"/></td>
+      <td><input type="number" th:field="*{age}" th:value="${studentData.getAge()}"/></td>
+    </tr>
+    <tr>
+      <td><input type="submit" value="Submit"/></td>
+    </tr>
+  </table>
+</form>
+<div th:replace="fragments::footer"></div>
+</body>
+<!--<div th:replace="scripts"></div>-->
+</html>
